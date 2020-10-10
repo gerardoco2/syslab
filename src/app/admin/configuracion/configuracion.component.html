@@ -1,0 +1,23 @@
+<div class="container bg-white ">
+    <div class="row ">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <ul class="nav nav-tabs ">
+                <li class="nav-item" role="presentation" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="unidades">Unidades de medida</a>
+                </li>
+                <li class="nav-item" role="presentation" routerLinkActive="active">
+                    <a class="nav-link" routerLink="tipoExamen">tipos de examen</a>
+                </li>
+                <li class="nav-item" role="presentation" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['users']">Items</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="">
+
+        <router-outlet></router-outlet>
+
+    </div>
+</div>

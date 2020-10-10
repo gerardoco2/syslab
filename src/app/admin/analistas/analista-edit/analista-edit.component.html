@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-12">
+        <form [formGroup]="analistaForm" (ngSubmit)="onSubmit()">
+            <div class="form-group ">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input formControlName="nombre" type="text" placeholder="Nombre" id="nombre"
+                            class="form-control" />
+                        <span *ngIf="!analistaForm.get('nombre').valid && analistaForm.get('nombre').touched"
+                            class="help-block">Please type a name</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input formControlName="apellido" type="text" id="apellido " class="form-control"
+                            placeholder="apellido" />
+                    </div>
+                    <div class="col-md-3">
+                        <input formControlName="email" type="email" id="email " class="form-control"
+                            placeholder="email" />
+                    </div>
+                    <div class="col-md-3">
+                        <input formControlName="password" type="text" id="clave " class="form-control"
+                            placeholder="clave" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button [disabled]="" class="btn btn-success" type="submit">
+                        {{ editMode ? 'Update' : 'Agregar'}}
+                    </button>
+                    <button class="btn btn-danger" type="button">Eliminar</button>
+                    <button class="btn btn-primary" type="button" (click)="onClear()">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

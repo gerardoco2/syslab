@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Entrar</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input class="form-control" type="text" name="usuario" id="usuario"
+                    placeholder="Escribe tu nombre de Usuario">
+            </div>
+            <div class="form-group">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" class="form-control" id="contraseña" name="contraseña"
+                    placeholder="Escribe tu contraseña">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" (click)="onLogin()">Acceder</button>
+            </div>
+        </form>
+    </div>
+
+</div>
