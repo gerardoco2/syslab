@@ -24,34 +24,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Gerardo</td>
-                        <td>Colina</td>
-                        <td>gerardocolina@gmail.com</td>
-                        <td>Active</td>
+                    <tr (click)="onSelected(analista.id)" *ngFor="let analista of analistas; let i = index">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{analista.nombre}}</td>
+                        <td>{{analista.apellido}}</td>
+                        <td>{{analista.email}}</td>
+                        <td>{{analista.estatus}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Thornton</td>
-                        <td>Contreras</td>
-                        <td>prueba@gmail.com</td>
-                        <td>Inactivo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>Quintero</td>
-                        <td>prueba2@gmail.com</td>
-                        <td>Activo</td>
-                    </tr>
+
                 </tbody>
 
             </table>
         </div>
-
-
-
     </div>
 
 

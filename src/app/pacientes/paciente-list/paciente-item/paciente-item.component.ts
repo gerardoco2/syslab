@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Paciente } from 'src/app/admin/modelos/paciente.model';
+import { PacientesService } from './../../../admin/servicios/pacientes.service';
 
 @Component({
   selector: 'app-paciente-item',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./paciente-item.component.css']
 })
 export class PacienteItemComponent implements OnInit {
+  pacientes: Paciente[] = [];
 
-  constructor() { }
+  constructor(private pacientesService: PacientesService) { }
 
   ngOnInit() {
+
   }
 
 }

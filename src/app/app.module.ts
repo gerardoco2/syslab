@@ -1,7 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from '@angular/common/http';
 import { ModalModule, BsModalRef } from "ngx-bootstrap/modal";
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -24,6 +28,11 @@ import { ConfiguracionComponent } from './admin/configuracion/configuracion.comp
 import { TipoExamenComponent } from './admin/configuracion/tipo-examen/tipo-examen.component';
 import { UnidadEditComponent } from './admin/configuracion/unidad/unidad-edit/unidad-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UnidadListComponent } from './admin/configuracion/unidad/unidad-list/unidad-list.component';
+import { ListaExamenesComponent } from './admin/configuracion/lista-examenes/lista-examenes.component';
+import { ItemsComponent } from './admin/configuracion/items/items.component';
+import { ItemsListComponent } from './admin/configuracion/items/items-list/items-list.component';
+import { ItemsEditComponent } from './admin/configuracion/items/items-edit/items-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,15 +54,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ConfiguracionComponent,
     TipoExamenComponent,
     UnidadEditComponent,
+    UnidadListComponent,
+    ListaExamenesComponent,
+    ItemsComponent,
+    ItemsListComponent,
+    ItemsEditComponent,
+
   ],
-  imports: [BrowserModule,
+  imports: [
+    HttpClientModule,
+    BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule
   ],
 
-  providers: [BsModalRef, PacientesService],
+  providers: [BsModalRef],
   bootstrap: [AppComponent],
   entryComponents: [PacienteEditComponent, SigninComponent],
 })

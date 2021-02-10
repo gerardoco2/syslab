@@ -3,19 +3,30 @@
         <span>Por favor selecione un paciente de la lista.</span>
     </div>
     <div class="col-sm-12 patient-selected ">
-        <h3>Paciente Seleccionado:</h3>
+        <div class="row">
+            <h3>Paciente Seleccionado:</h3>
+        </div>
+
         <div class="row">
             <div class="col-md-2"><span class="atributo">Nombre: </span></div>
-            <div class="col-md-4"><span class="valor">Gerardo</span></div>
+            <div class="col-md-4"><span class="valor">{{ paciente ? paciente.nombre : ""}}</span></div>
             <div class="col-md-2"><span class="atributo">Apellido: </span></div>
-            <div class="col-md-4"><span class="valor">Colina</span></div>
+            <div class="col-md-4"><span class="valor">{{ paciente ? paciente.apellido : ""}}</span></div>
         </div>
 
         <div class="row">
             <div class="col-md-2"><span class="atributo">Cedula: </span></div>
-            <div class="col-md-4"><span class="valor">20569539</span></div>
+            <div class="col-md-4"><span class="valor">{{paciente ? paciente.cedula : ""}}</span></div>
             <div class="col-md-2"><span class="atributo">Correo: </span></div>
-            <div class="col-md-4"><span class="valor">gerardocolina@gmail.com</span></div>
+            <div class="col-md-4"><span class="valor">{{paciente ? paciente.email : ""}}</span></div>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><span class="atributo">fecha de nacimiento: </span></div>
+            <div class="col-md-4"><span
+                    class="valor">{{paciente ? (paciente.fecha_nac  | date: 'dd/MM/yyyy') : ""}}</span></div>
+            <div class="col-md-2"><span class="atributo">telefono: </span></div>
+            <div class="col-md-4"><span class="valor"></span>{{paciente ? paciente.telefono : ""}}</div>
             <br>
         </div>
 

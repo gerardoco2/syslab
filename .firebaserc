@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "syslab-jaz": {
+      "hosting": {
+        "syslab": [
+          "syslab-jaz"
+        ]
+      }
+    }
+  }
+}

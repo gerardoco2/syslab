@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyCAtr351Ozg3ikTpHy158nh8c_VKxAt_8w",
+    authDomain: "syslab-jaz.firebaseapp.com",
+    databaseURL: "https://syslab-jaz.firebaseio.com",
+    projectId: "syslab-jaz",
+    storageBucket: "syslab-jaz.appspot.com",
+    messagingSenderId: "886800199836",
+    appId: "1:886800199836:web:f59f1afd198ebae8813d59",
+    measurementId: "G-RBZ2CEH2H2"
+  }
 };
 
 /*

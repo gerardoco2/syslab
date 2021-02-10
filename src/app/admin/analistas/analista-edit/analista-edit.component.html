@@ -24,13 +24,18 @@
                 </div>
 
             </div>
+
             <div class="row">
-                <div class="col-xs-12">
-                    <button [disabled]="" class="btn btn-success" type="submit">
-                        {{ editMode ? 'Update' : 'Agregar'}}
+                <div class="col-12">
+                    <button [disabled]="!analistaForm.valid" class="btn btn-success " type="submit">
+                        {{ editMode ? 'Actualizar' : 'Agregar'}}
                     </button>
-                    <button class="btn btn-danger" type="button">Eliminar</button>
-                    <button class="btn btn-primary" type="button" (click)="onClear()">Cancelar</button>
+                    <button [disabled]="!editMode" class="btn btn-danger ml-2" type="button"
+                        (click)="onDelete()">Eliminar</button>
+
+                    <button class="btn btn-primary ml-2" type="button" (click)="onClear()">Cancelar</button>
+                    <button *ngIf="analista && (analista.estatus === 'inactivo')" [disabled]="!editMode"
+                        class="btn btn-danger ml-2" type="button" (click)="onActivate()">Activar</button>
                 </div>
             </div>
         </form>

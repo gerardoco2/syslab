@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 import { Paciente } from 'src/app/admin/modelos/paciente.model';
 import { PacienteEditComponent } from '../paciente-edit/paciente-edit.component';
@@ -17,16 +18,35 @@ export class PacienteListComponent implements OnInit {
 
   pacienteEditModal: BsModalRef;
 
-  constructor(private modalService: BsModalService, private servPacientes: PacientesService) { }
+  constructor(private modalService: BsModalService,
+    private servPacientes: PacientesService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.pacientes = this.servPacientes.getPacientes();
-    console.log(this.pacientes);
+    this.updatePacientesList();
   }
 
-  openPacienteEdit() {
-    const initialState = {} //pasar el objeto
-    this.pacienteEditModal = this.modalService.show(PacienteEditComponent);
+  updatePacientesList() {
+    this.servPacientes.getPacientes()
+      .subscribe(
+        (pacientes: Paciente[]) => {
+          this.pacientes = pacientes;
+        }
+      );
+  }
+
+  onPactientSelected(id: number) {
+    //this.servPacientes.patientSelected.next(id);
+
+    this.router.navigate([id], { relativeTo: this.route });
+  }
+
+  openPacienteEdit(patientId: number) {
+
+    //this.servPacientes.pacienteStarEdit.next(patientId);
+    this.router.navigate([patientId, 'edit'], { relativeTo: this.route });
+    //this.pacienteEditModal = this.modalService.show(PacienteEditComponent);
     //this.pacienteEditModal.content.closeBtnName = 'Close';
   }
 }
