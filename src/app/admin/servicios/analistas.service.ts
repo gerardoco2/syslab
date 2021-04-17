@@ -11,11 +11,7 @@ export class AnalistasService {
   analistasChanged = new Subject<Analista[]>();
   analistaStartEdit = new Subject<number>();
 
-
-
-  constructor(private httpClient: HttpClient) {
-
-  }
+  constructor(private httpClient: HttpClient) { }
 
   setAnalistas(analistas: Analista[]) {
     this.analistasChanged.next(analistas);

@@ -24,4 +24,8 @@ export class TipoExamenService {
     return this.http.delete(`http://localhost:3001/tipo-examen/${tipoExamenId}`);
   }
 
+  itemsByTipoExamen(tipoExamenId: string) {
+    return this.http.get(`http://localhost:3001/tipo-examen/${tipoExamenId}/items`);
+  }
+
 }

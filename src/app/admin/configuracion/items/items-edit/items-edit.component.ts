@@ -49,10 +49,10 @@ export class ItemsEditComponent implements OnInit {
     const valorFinal = this.form.get('valorFinal').value;
     const unidadId = this.form.get('unidadId').value;
 
-    const nuevoItem = new Item(nombre, descripcion, valorIni, valorFinal, unidadId);
+    /*const nuevoItem = new Item(nombre, descripcion, valorIni, valorFinal, unidadId);
     this.itemsServ.createItem(nuevoItem).subscribe(
       () => console.log("item creado")
-    );
+    );*/
 
     this.onCancel();
   }

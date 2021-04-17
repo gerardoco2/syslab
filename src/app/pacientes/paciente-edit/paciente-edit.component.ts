@@ -14,7 +14,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class PacienteEditComponent implements OnInit {
   modal: BsModalRef;
-  patientId: number;
+  patientId: string;
   editMode = false;
   patientForm: FormGroup;
   paciente: Paciente;
@@ -32,7 +32,7 @@ export class PacienteEditComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.patientId = +params['id'];
+          this.patientId = params['id'];
           console.log("este es el id que quiero ", this.patientId);
         }
       );
@@ -107,18 +107,16 @@ export class PacienteEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.patientForm.value);
-    const nom = this.patientForm.get('nombre').value;
     const ced = this.patientForm.get('cedula').value;
+    const nom = this.patientForm.get('nombre').value;
     const ap = this.patientForm.get('apellido').value;
     const fecha = this.patientForm.get('fecha_nac').value;
     const email = this.patientForm.get('email').value;
     const telf = this.patientForm.get('telefono').value;
 
-
-
-    const nuevoPaciente = new Paciente(nom, ced, ap, fecha, email, telf);
+    const nuevoPaciente = new Paciente(ced, nom, ap, fecha, email, telf);
     if (!this.add) {
-      this.pacientesServ.updatePaciente(this.paciente.id, nuevoPaciente).subscribe(
+      this.pacientesServ.updatePaciente(this.paciente.cedula, nuevoPaciente).subscribe(
         () => {
           console.log("paciente actualizado");
         });
@@ -127,10 +125,11 @@ export class PacienteEditComponent implements OnInit {
     }
     this.patientForm.reset();
     this.paciente = null;
+    this.close();
   }
 
   close() {
-    //this.bsModalRef.hide();
+    this.bsModalRef.hide();
   }
 
 

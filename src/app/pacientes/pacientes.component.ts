@@ -38,10 +38,10 @@ export class PacientesComponent implements OnInit {
       );
   }
 
-  onPactientSelected(id: number) {
+  onPactientSelected(ced: string) {
     //this.servPacientes.patientSelected.next(id);
     console.log("soy yo el que voy");
-    this.router.navigate(['admin/pacientes/', id]);
+    this.router.navigate(['admin/pacientes/', ced]);
   }
 
   openPacienteEdit(pacienteId: number) {

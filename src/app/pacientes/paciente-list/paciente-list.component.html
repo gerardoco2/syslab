@@ -37,14 +37,14 @@
     <tbody>
 
 
-        <tr *ngFor="let paciente of pacientes; let i = index" (click)="onPactientSelected(paciente.id)"
+        <tr *ngFor="let paciente of pacientes; let i = index" (click)="onPactientSelected(paciente.cedula)"
             style="cursor: pointer;">
             <th scope="row">{{ i + 1}}</th>
             <td>{{paciente.cedula}}</td>
             <td>{{paciente.nombre}}</td>
             <td>{{paciente.apellido}}</td>
             <td>
-                <button class="btn btn-primary" (click)="openPacienteEdit(paciente.id)"> edit</button>
+                <button class="btn btn-primary" (click)="openPacienteEdit(paciente.cedula)"> edit</button>
                 <button class="btn btn-danger"> Eliminar</button>
             </td>
         </tr>

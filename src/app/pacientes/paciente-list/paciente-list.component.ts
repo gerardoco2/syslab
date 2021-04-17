@@ -36,13 +36,13 @@ export class PacienteListComponent implements OnInit {
       );
   }
 
-  onPactientSelected(id: number) {
+  onPactientSelected(ced: string) {
     //this.servPacientes.patientSelected.next(id);
 
-    this.router.navigate([id], { relativeTo: this.route });
+    this.router.navigate([ced], { relativeTo: this.route });
   }
-
-  openPacienteEdit(patientId: number) {
+  //pacientId se refiere a la cedula
+  openPacienteEdit(patientId: string) {
 
     //this.servPacientes.pacienteStarEdit.next(patientId);
     this.router.navigate([patientId, 'edit'], { relativeTo: this.route });

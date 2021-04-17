@@ -33,6 +33,9 @@ import { ListaExamenesComponent } from './admin/configuracion/lista-examenes/lis
 import { ItemsComponent } from './admin/configuracion/items/items.component';
 import { ItemsListComponent } from './admin/configuracion/items/items-list/items-list.component';
 import { ItemsEditComponent } from './admin/configuracion/items/items-edit/items-edit.component';
+import { ExamenComponent } from './admin/examen/examen.component';
+import { ResultadoComponent } from './admin/examen/resultado/resultado.component';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +62,8 @@ import { ItemsEditComponent } from './admin/configuracion/items/items-edit/items
     ItemsComponent,
     ItemsListComponent,
     ItemsEditComponent,
+    ExamenComponent,
+    ResultadoComponent,
 
   ],
   imports: [

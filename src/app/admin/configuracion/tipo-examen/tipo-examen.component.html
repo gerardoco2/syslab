@@ -1,6 +1,10 @@
 <form [formGroup]="tipoExForm">
     <div class="form-row">
         <div class="form-group col-md-4">
+            <h4>Codificacion</h4>
+            <input formControlName="codigo" type="text" class="form-control" placeholder="Codigo del Examen">
+        </div>
+        <div class="form-group col-md-4">
             <h4>Nombre del Examen</h4>
             <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre del Examen">
         </div>
@@ -39,7 +43,7 @@
                             <option *ngFor="let unidad of unidades" value="{{unidad.id}}">{{ unidad.nombre}}</option>
                         </select>
                     </div>
-                    <button (click)="removeItem(i)">Eliminar</button>
+                    <button class="btn btn-primary" (click)="removeItem(i)">Eliminar</button>
                 </div>
             </div>
         </div>

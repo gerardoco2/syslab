@@ -18,14 +18,16 @@ export class PacientesService {
     return this.http.get('http://localhost:3001/pacientes');
   }
 
-  getPacienteById(id: number) {
-    return this.http.get('http://localhost:3001/pacientes/' + id);
+  getPacienteByCedula(ced: string) {
+    return this.http.get('http://localhost:3001/pacientes/' + ced);
   }
+
   create(paciente: Paciente) {
     return this.http.post('http://localhost:3001/pacientes', paciente);
   }
 
-  updatePaciente(pacienteId: number, paciente: Paciente) {
+  //pacienteId sera una cedula la cual es string para efectos de esta interfaz
+  updatePaciente(pacienteId: string, paciente: Paciente) {
     return this.http.put(`http://localhost:3001/pacientes/${pacienteId}`, paciente);
   }
 

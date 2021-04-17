@@ -15,6 +15,7 @@ import { UnidadListComponent } from './admin/configuracion/unidad/unidad-list/un
 import { UnidadEditComponent } from './admin/configuracion/unidad/unidad-edit/unidad-edit.component';
 import { ListaExamenesComponent } from './admin/configuracion/lista-examenes/lista-examenes.component';
 import { ItemsComponent } from './admin/configuracion/items/items.component';
+import { ExamenComponent } from "./admin/examen/examen.component";
 
 
 const routes: Routes = [
@@ -34,6 +35,9 @@ const routes: Routes = [
           [
             { path: ":id", component: AnalistasComponent }
           ]
+      },
+      {
+        path: "examen", component: ExamenComponent
       },
 
       {

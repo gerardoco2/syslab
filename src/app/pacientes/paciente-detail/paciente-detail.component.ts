@@ -13,7 +13,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class PacienteDetailComponent implements OnInit, OnDestroy {
   paciente: Paciente;
-  id: number;
+  ced: string;
   subscription: Subscription;
   pacienteEditModal: BsModalRef;
 
@@ -24,8 +24,8 @@ export class PacienteDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id'];
-        this.pacienteServ.getPacienteById(this.id).subscribe(
+        this.ced = params['id'];
+        this.pacienteServ.getPacienteByCedula(this.ced).subscribe(
           (paciente: Paciente) => {
             this.paciente = paciente;
           }

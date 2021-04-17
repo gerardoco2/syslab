@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UnidadService } from 'src/app/admin/servicios/unidad.service';
 import { Unidad } from './../../modelos/unidad.model';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder, Form } from '@angular/forms';
 import { TipoExamen } from './../../modelos/tipo-examen.model';
 import { TipoExamenService } from './../../servicios/tipo-examen.service';
+import { Item } from '../../modelos/item.model';
+import { ItemsService } from '../../servicios/items.service';
 
 @Component({
   selector: 'app-tipo-examen',
@@ -14,7 +16,9 @@ export class TipoExamenComponent implements OnInit {
   unidades: Unidad[];
   tipoExForm: FormGroup;
 
-  constructor(private unidadService: UnidadService, private tpService: TipoExamenService, private fb: FormBuilder) { }
+  constructor(private unidadService: UnidadService,
+    private tpService: TipoExamenService, private itemService: ItemsService,
+    private fb: FormBuilder) { }
 
   ngOnInit() {
     this.formInit();
@@ -28,13 +32,9 @@ export class TipoExamenComponent implements OnInit {
 
   formInit() {
     this.tipoExForm = new FormGroup({
+      "codigo": new FormControl('', Validators.required),
       "nombre": new FormControl('', Validators.required),
       'descripcion': new FormControl('', Validators.required),
-      /*'nombre-item': new FormControl('', Validators.required),
-      'descripcion-item': new FormControl('', Validators.required),
-      'valorIni-item': new FormControl('', Validators.required),
-      'valorFinal-item': new FormControl('', Validators.required),
-      'unidadSelected': new FormControl('', Validators.required),*/
       'items': new FormArray([])
     });
   }
@@ -45,17 +45,38 @@ export class TipoExamenComponent implements OnInit {
 
   onSubmit() {
     console.log(this.tipoExForm.value);
-    /*const nombre = this.tipoExForm.get('nombre').value;
+    const codigo = this.tipoExForm.get('codigo').value;
+    const nombre = this.tipoExForm.get('nombre').value;
     const descripcion = this.tipoExForm.get('descripcion').value;
-    const nuevoTipEx = new TipoExamen(nombre, descripcion);
+    const nuevoTipEx = new TipoExamen(codigo, nombre, descripcion);
+    const items = this.tipoExForm.get("items").value;
 
     this.tpService.createTipoExamen(nuevoTipEx).subscribe(
-      () => console.log("tipo examen creado con exito!"),
+      () => {
+        console.log("tipo examen creado con exito!");
+        for (let item of items) {
+          let nuevoItem = new Item(item.nombreItem, item.descripcionItem, item.valorIniItem, item.valorFinalItem, item.unidadSelected, codigo);
+          console.log("EL ITEM a insertar", nuevoItem);
+          this.itemService.createItem(nuevoItem).subscribe(
+            () => console.log("item creado con exito"),
+            (error) => console.log("no se creo el item ", error),
+            () => console.log("COMPLETE item creado con exito!"),
+          );
+        }
+      },
       (error) => console.log("no se creo el tipo ex: ", error),
       () => console.log("COMPLETE tipo examen creado con exito!"),
-    );*/
+    );
 
     this.onCancel();
+    let itemsArr = (<FormArray>this.tipoExForm.get('items'));
+    this.clearFormArray(itemsArr);
+  }
+
+  clearFormArray(fA: FormArray) {
+    while (fA.length !== 0) {
+      fA.removeAt(0)
+    }
   }
 
   newItem(): FormGroup {
@@ -73,7 +94,7 @@ export class TipoExamenComponent implements OnInit {
   }
 
   removeItem(i: number) {
-    //(<FormArray>this.tipoExForm.get('items').remo)
+    (<FormArray>this.tipoExForm.get('items')).removeAt(i);
   }
 
 }
